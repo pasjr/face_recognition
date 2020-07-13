@@ -9,7 +9,9 @@ services:
       context: .
       #Uncomment this line to run the example on the GPU (requires Nvidia-Docker)
       # dockerfile: Dockerfile.gpu 
-    command: python3 -u find_faces_in_picture_cnn.py
+    devices:
+      - "/dev/video0:/dev/video0"
+    command: python3 facerec_from_webcam.py
     volumes:
       - ./:/face_recognition
     #Uncomment this line to run the example on the GPU (requires Nvidia-Docker)
